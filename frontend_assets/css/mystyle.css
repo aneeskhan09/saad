@@ -1,0 +1,42 @@
+.home-banner .banner-search-container .form-outer {
+    position: relative;
+    display: table;
+    width: 100%;
+    vertical-align: middle;
+    height: 366px;
+}
+
+.home-banner .banner-slider .slide-item:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 45%;
+    background: #131619;
+    opacity: 0.5;
+}
+
+.home-banner .banner-slider .slide-item {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 45%;
+    background: #131619;
+    opacity: 0.5;
+}
+
+.home-banner .banner-search-container .banner-search-form {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    top: -92px;
+    color:Black;
+}
+.property-listing {
+    position: relative;
+    padding: 260px 0px;
+}
