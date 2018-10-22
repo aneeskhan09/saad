@@ -185,14 +185,13 @@ class Home extends CI_Controller
     {
         if($this->isLoggedIn())
         {
-            print_r($_SESSION);die;
-            $data['social_links'] = $this->Home_model->get_social_links();
-            $data['company_info'] = $this->Admin_model->get_company_info();
-            $data['category']  = $this->Admin_model->getAll('category');
-            $data['sub_category']  = $this->Admin_model->getAll('sub_category');
-            $data['brands']  = $this->Admin_model->getAll('brands');
+            $data = array();
+            // print_r($_SESSION);die;
+            
             //echo "<pre>";print_r($data['product_detail']);exit;
-            $data['title'] = $data['company_info']['name']." | Dashboard";
+            $data['title'] = $this->session->userdata('name')." | Dashboard";
+            $data['ads']   =  $this->Home_model->agent_dashboard(); 
+            // echo "<pre>";print_r($data); die;
             $this->load->view('frontend/static/head',$data);
             $this->load->view('frontend/static/header');
             $this->load->view('frontend/dashboard');

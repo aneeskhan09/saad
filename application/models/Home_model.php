@@ -21,6 +21,14 @@ class Home_model extends CI_Model
     {
         return $this->db->query("SELECT ads_id FROM ads ORDER BY ads_id DESC LIMIT 1")->row();
     }
+    public function agent_dashboard()
+    {
+        $this->db->where('agent_id',$this->session->userdata('id'));
+        $this->db->select('*')->from('ads');
+        $data = $this->db->get()->result(); //print_r($data);
+        return $data;
+
+    }
     /*==== FUNCTION GET ALL DATA ====*/
     public function getAll($table,$where = NULL)
     {
@@ -89,49 +97,10 @@ class Home_model extends CI_Model
                     AND p.`id` = $id")->result_array();
     }
 
-    /*====== related products ======*/
-    public function related_products($id)
-    {
-        return $related_products = $this->db->select('*')->FROM('products')->WHERE('sub_cat_id',$id)->limit(12)->get()->result_array();
-    }
 
-    public function get_new_products()
-    {
-        $cats = $this->db->get("category")->result();
-        foreach ($cats as $key => $cat){
-           $prods = $this->db->select("prod.*")
-                    ->where("scat.cat_id", $cat->id)
-                    ->join("sub_category scat", "scat.id = prod.sub_cat_id")
-                    ->limit(6)
-                    ->order_by("prod.date_time")
-                    ->get("products prod")
-                    ->result();
-           $cats[$key]->products = $prods;
-        }
-        return $cats;
-    }
-    
-//                    $products = $this->db->get_where("products", ['sub_cat_id' => $scat->id])->order_by("date_time")->limit(6);
-//                $scat->products = $products;
-//                $all_scats[] = $scat;
-    
 
-    public function get_brands_where($id = null)
-    {
-        $this->db->select("b.name, b.id, bg.cat_id");
-        if($id){
-            $this->db->where("bg.cat_id", $id);
-        }
-        $this->db->join("brand_groups bg", "bg.brand_id=b.id", "left");
-        $res = $this->db->get("brands b")->result();
-        return $res;
-    }
 
-    /*===== GET FEATURED PRODUCTS =====*/
-    public function get_featured_products()
-    {
-        return $this->db->select('*')->from('products')->WHERE('p_feature =\'YES\'')->get()->result_array();
-    }
+   
 
     /*===== CUSTOMER SIGN UP ======*/
     public function register_customer($data)
