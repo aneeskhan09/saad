@@ -19,18 +19,18 @@
                     
                     <div class="banner-form-box">
                         <div class="default-form">
-                            <form method="post" action="<?=base_url('frontend_assets')?>images/properties-list-one.html">
+                            <form method="GET" action="<?=base_url('Home/Search')?>">
                                 <div class="row clearfix">
                                     <div class="form-group col-md-3 col-sm-4 col-xs-12">
-                                        <select class="custom-select-box">
+                                        <select name= "type" class="custom-select-box">
                                             <option>Property Type</option>
                                             <option>Residential</option>
                                             <option>Commercial</option>
-                                            <option>Agriculture</option>
+                                            <!-- <option>Agriculture</option> -->
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6 col-sm-4 col-xs-12">
-                                        <input type="text" name="field-name" value="" placeholder="Enter Location" required>
+                                        <input type="text"  name="keyword" value="" placeholder="Enter Location" required>
                                     </div>
                                     <div class="form-group col-md-3 col-sm-4 col-xs-12">
                                         <button type="submit" class="theme-btn btn-style-one">SEARCH</button>

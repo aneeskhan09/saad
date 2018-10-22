@@ -17,7 +17,14 @@ class Home extends CI_Controller
     }
 
 
-
+    public function search()
+    {
+        print_r($_GET);
+        $this->load->view('frontend/static/head');
+        $this->load->view('frontend/static/header');
+        $this->load->view('frontend/search');
+        $this->load->view('frontend/static/footer');
+    }
     /*===== HOME PAGE ======*/
     public function index()
 
